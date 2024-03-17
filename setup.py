@@ -1,6 +1,6 @@
 from setuptools import setup
 
-VERSION = '0.0.1'
+VERSION = '0.0.2'
 DESCRIPTION = 'USPS Address API 3.0 Python wrapper'
 
 setup(
@@ -14,8 +14,7 @@ setup(
     packages=['pyuspsaddress'],
     install_requires=['requests',
                       'djangorestframework',
-                      'pytest',
-                      'twine'
+                      'pytest'
                       ],
 
     classifiers=[

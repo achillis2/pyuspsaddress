@@ -134,11 +134,11 @@ class USPSAPI:
             street_address, secondary_address, city, state_zipcode = list_address
             state, zipcode = state_zipcode.split(" ")
         return self.construct_address(
-            street_address.strip().upper(),
-            secondary_address.strip().upper(),
-            city.strip().upper(),
-            state.strip().upper(),
-            zipcode.strip().upper()
+            street_address.strip().upper() if street_address else '',
+            secondary_address.strip().upper() if secondary_address else '',
+            city.strip().upper() if city else '',
+            state.strip().upper() if state else '',
+            zipcode.strip().upper() if zipcode else ''
         )
 
     @_renew_token
@@ -174,12 +174,12 @@ class USPSAPI:
 
         auth = "Bearer " + self.token
         str_address = self.construct_address(
-            address1.upper(),
-            address2.upper(),
-            city.upper(),
-            state.upper(),
-            urbanization_code.upper(),
-            zipcode.upper()
+            address1.strip().upper() if address1 else '',
+            address2.strip().upper() if address2 else '',
+            city.strip().upper() if city else '',
+            state.strip().upper() if state else '',
+            zipcode.strip().upper() if zipcode else '',
+            urbanization_code.strip().upper() if urbanization_code else '',
         )
 
         resp_query = self.session.get(
